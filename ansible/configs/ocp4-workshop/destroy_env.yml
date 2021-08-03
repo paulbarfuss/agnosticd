@@ -380,7 +380,7 @@
       when:
         # Before deleting the provisioner, make sure destroy terraform successfully run.
         - stack_status is defined
-        - stack_status == 'CREATE_COMPLETE'
+        - stack_status == 'CREATE_COMPLETE' or stack_status == 'UPDATE_COMPLETE'
         - "'bastions' in groups"
         - groups.bastions | length > 0
         - hostvars[groups.bastions[0]].oktodelete
